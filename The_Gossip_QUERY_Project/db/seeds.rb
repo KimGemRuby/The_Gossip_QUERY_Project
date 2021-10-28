@@ -29,18 +29,22 @@ end
 
 puts "Cities table"
 
-tp City.all
-Users
-adjectifs= %w[petit grand maigre gros chauve muscle intelligent parfait mediocre insupportable eblouissant valeureux]
 
-10.times do 
+#Users
+#adjectifs= %w[petit grand maigre gros chauve muscle intelligent parfait mediocre insupportable eblouissant valeureux]
+
+10.times do
+    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence(word_count: 50 + rand(10)), email: Faker::Internet.email, age: Faker::Number.between(from: 15, to: 99))
+  end
+
+#10.times do 
   #first_name = Faker::Name.first_name
   #age = rand(18..90)
   #city = City.all.sample
 #text = "Je m'appelle #{first_name}, je suis #{adjectifs.sample} et mon livre préféré est #{Faker::Book.title}, je suis #{Faker::Name.title[:job].sample} à #{city.name} "
-  User.create(first_name: first_name, last_name: Faker::Name.last_name ,description: text, email: Faker::Internet.email, age: age, city: city )
-end
-puts
+  #User.create(first_name: first_name, last_name: Faker::Name.last_name ,description: text, email: Faker::Internet.email, age: age, city: city )
+#end
+
 puts "Users table"
 #tp User.all
 
@@ -49,7 +53,7 @@ puts "Users table"
   #Gossip.create(title: Faker::Hipster.word, content: Faker::ChuckNorris.fact, user: User.all.sample )
   
 #end
-puts
+
 puts "Gossips table"
 #tp Gossip.all
 
@@ -57,7 +61,7 @@ puts "Gossips table"
 #10.times do
   #Tag.create(title: Faker::Verb.base)
 #end
-puts
+
 puts "Cities table"
 # tp Tag.all
 
@@ -69,7 +73,7 @@ puts "Cities table"
   #JoinTableTagGossip.create(tag: Tag.all.sample, gossip: g)
 #end
 
-puts
+
 puts "JoinTableTagGossip table"
 #tp JoinTableTagGossip.all
 
@@ -90,8 +94,8 @@ puts "Private messages table"
   #LierPrivateMessageUser.create(user: User.all.sample, private_message: pm)
 #end
 
-puts
-puts "Lier private message et users table"
+
+#puts "Lier private message et users table"
 #tp LierPrivateMessageUser.all
 
 10.times do
@@ -99,3 +103,6 @@ puts "Lier private message et users table"
 end
 puts "city"
 
+10.times do 
+    Gossip.create(content: Faker::ChuckNorris)
+end
