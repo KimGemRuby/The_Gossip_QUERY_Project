@@ -103,6 +103,37 @@ puts "Private messages table"
 end
 puts "city"
 
-10.times do 
-    Gossip.create(content: Faker::ChuckNorris)
+20.times do |index|
+    Gossip.create!(
+      title: Faker::Lorem.sentence(word_count: 4),
+      content: Faker::Lorem.sentence(word_count: 15)
+    )
+  end
+
+ 
+
+  10.times do |index|
+    Tag.create!(
+      title: Faker::Lorem.sentence(word_count: 1),
+      title: Faker::ChuckNorris.fact
+    )
+  end
+  
+  5.times do 
+    PrivateMessage.create(
+      content: Faker::Lorem.unique.paragraph(sentence_count: 1, supplemental: true)
+    )
+  end
+
+  30.times do
+    Comment.create(content: Faker::Lorem.sentence(word_count: 50 + rand(100)))
+  end
+
+  20.times do 		#creer 20 like qui est de maniere aleatoire un like de comment ou de gossip
+	if rand(0..10)%2==0 
+		Like.create(user: User.all.sample, gossip: Gossip.all.sample)
+	else
+		Like.create(user: User.all.sample, comment: Comment.all.sample)
+	end
+    
 end
